@@ -14,32 +14,32 @@ import java.util.List;
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private final String filepath;
-	
+
 	/**
-     * Constructor that initializes the file path.
-     * 
-     * @param filepath The full or partial path to the file containing symptom strings, one per line.
-     */
-	public ReadSymptomDataFromFile (String filepath) {
+	 * Constructor that initializes the file path.
+	 * 
+	 * @param filepath The full or partial path to the file containing symptom
+	 *                 strings, one per line.
+	 */
+	public ReadSymptomDataFromFile(String filepath) {
 		this.filepath = filepath;
 	}
-	
-	
+
 	/**
-     * Reads the symptoms from the specified file.
-     * If the file is missing or an error occurs, an empty list will be returned.
-     * 
-     * @return A list of symptoms read from the file. Duplicates are possible.
-     */
+	 * Reads the symptoms from the specified file.
+	 * If the file is missing or an error occurs, an empty list will be returned.
+	 * 
+	 * @return A list of symptoms read from the file. Duplicates are possible.
+	 */
 	@Override
-	public List<String> GetSymptoms() {
-		ArrayList<String> result = new ArrayList<>();
-		
+	public List<String> getSymptoms() {
+		List<String> result = new ArrayList<>();
+
 		if (filepath != null) {
 			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
+				BufferedReader reader = new BufferedReader(new FileReader(filepath));
 				String line = reader.readLine();
-				
+
 				while (line != null) {
 					result.add(line);
 					line = reader.readLine();
@@ -49,7 +49,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return result;
 	}
 
